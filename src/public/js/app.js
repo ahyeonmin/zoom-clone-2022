@@ -1,7 +1,8 @@
 const socket = io();
 
 const welcome = document.getElementById("welcome");
-const form = welcome.querySelector("form");
+const enter = document.getElementById("enter");
+const nameForm = welcome.querySelector("#name");
 const room = document.getElementById("room");
 
 room.hidden = true;
@@ -24,43 +25,43 @@ function handleMessageSubmit(event) {
     });
 }
 
-function handleNicknameSubmit(event) {
-    event.preventDefault();
-    const input = room.querySelector("#name input");
-    socket.emit("nickname", input.value);
-}
-
 function showRoom() {
     welcome.hidden = true;
     room.hidden = false;
     const h3 = room.querySelector("h3");
     h3.innerText = `Room: ${roomName}`;
     const msgForm = room.querySelector("#msg");
-    const nameForm = room.querySelector("#name");
     msgForm.addEventListener("submit", handleMessageSubmit);
-    nameForm.addEventListener("submit", handleNicknameSubmit);
 }
 
-function handleFormSubmit(event) {
+function handleEnterSubmit(event) {
     event.preventDefault();
-    const input = form.querySelector("input");
+    const input = enter.querySelector("input");
     socket.emit("enter_room", input.value, showRoom);
     roomName = input.value;
     input.value = "";
 }
 
-form.addEventListener("submit", handleFormSubmit);
+function handleNicknameSubmit(event) {
+    event.preventDefault();
+    const input = welcome.querySelector("#name input");
+    socket.emit("nickname", input.value);
+}
+
+nameForm.addEventListener("submit", handleNicknameSubmit);
+
+enter.addEventListener("submit", handleEnterSubmit);
 
 socket.on("welcome", (user, newCount) => {
     const h3 = room.querySelector("h3");
     h3.innerText = `Room: ${roomName} (${newCount})`;
-    addMessage(`${user} Joined! 🙋🏻`);
+    addMessage(`${user} Joined!`);
 });
 
 socket.on("bye", (left, newCount) => {
     const h3 = room.querySelector("h3");
     h3.innerText = `Room: ${roomName} (${newCount})`;
-    addMessage(`${left} Left... 👋🏻`);
+    addMessage(`${left} Left...`);
 });
 
 socket.on("new_message", addMessage);
