@@ -1,0 +1,238 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --point: #00a2e0;
+  --gray: #d7d8d8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  color: #353535;
+}
+
+body {
+  width: 100%;
+  min-width: 1280px;
+  min-height: 720px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* ----------------- */
+
+#enter {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 130px;
+  padding: 30px;
+  background-color: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+}
+
+#enterForm {
+  width: 100%;
+  height: 100%;
+}
+
+#enterForm h1#noom {
+  margin-bottom: 50px;
+  font-size: 35px;
+  font-weight: bold;
+  color: #3F3F3F;
+}
+
+#enterForm h5 {
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+
+#enterForm input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+#enterForm button {
+  position: relative;
+  right: 5px;
+  margin-top: 20px;
+  border: none;
+  background-color: white;
+}
+
+#enterForm button:hover {
+  font-weight: bold;
+  transition: all ease 0.1s;
+}
+
+/* ----------------- */
+
+#stream {
+  width: 100vw;
+  height: 100vh;
+  padding-left: 9.5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+#streamWrap {
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid lightgray;
+}
+
+/* ----------------- */
+
+#myStream {
+  width: 45%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+  overflow-x: hidden;
+}
+
+#myStream h1 {
+  padding: 15px 0px;
+  text-align: center;
+  font-family: "GmarketSansMedium";
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--point);
+}
+
+#myStream #videoContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+#myStream video#myFace {
+  width: 400px;
+  height: 300px;
+  margin-bottom: 20px;
+  background-color: var(--gray);
+}
+
+#myStream video#peerFace {
+  width: 400px;
+  height: 300px;
+  margin-bottom: 20px;
+  background-color: var(--gray);
+  background-image: url("/public/img/user.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#myStream #buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myStream button {
+  padding: 0;
+  padding-right: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+#myStream select {
+  height: 38px;
+  border: none;
+  background-color: transparent;
+  color: var(--point);
+  font-family: "GmarketSansMedium";
+}
+
+#myStream select:focus {
+  outline: none;
+}
+
+/* ----------------- */
+
+#myPanel {
+  width: 100%;
+  max-width: 330px;
+  margin-top: 50px;
+  padding: 30px 40px 30px 25px;
+  background-color: white;
+}
+
+#myPanel h3#currentNickname,
+h3#chatTitle {
+  margin-bottom: 15px;
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--point);
+}
+
+#myPanel input {
+  width: calc(100% - 70px);
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--gray);
+  font-family: "GmarketSansMedium";
+}
+
+#myPanel button {
+  width: 70px;
+  padding: 5px;
+  border: none;
+  background-color: var(--point);
+  font-family: "GmarketSansMedium";
+  color: white;
+}
+
+#myPanel #chatForm #chatList {
+  height: 540px;
+  padding: 20px;
+  background-color: gold;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#myPanel #chatForm #chatList li {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 13px;
+  font-family: "GmarketSansMedium";
+  word-break: break-all;
+}
+
+#myPanel #chatForm #chatList span {
+  font-size: 12px;
+  font-family: "GmarketSansMedium";
+}

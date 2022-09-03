@@ -4,26 +4,40 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Noom
-        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
-    body 
-        header
-            h1 Noom
-        main
-            div#welcome
-                form#name
-                    input(type="text", placeholder="Nickname", required)
-                    button Save
-                form#enter
-                    input(type="text", placeholder="room name", required)
-                    button Enter room
-                h4 Open Rooms:
-                ul
-            div#room
-                h3
-                ul
-                form#msg
-                    input(type="text", placeholder="write a message...", required)
-                    button Send
-        script(src="http://localhost:3000/socket.io/socket.io.js")
-        script(src="/public/js/app.js")
+        title noom.
+        link(rel="stylesheet", href="/public/style.css")
+        link(rel="icon" href="/public/img/user.png")
+    body
+        div#enter
+            form#enterForm
+                h1#noom noom.
+                h5 room name
+                input(id="roomInput", maxlength="10", required, type="text")
+                h5 nickname
+                input(id="nicknameInput", maxlength="15", required, type="text")
+                button enter
+        div#stream
+            div#streamWrap
+                div#myStream
+                    h1#noom.
+                    div#videoContainer
+                        video#myFace(autoplay,playsinline)
+                        video#peerFace(autoplay,playsinline)
+                    div#buttonContainer
+                        button#mute
+                            img(src="/public/img/mike2.png")
+                        button#camera
+                            img(src="/public/img/video2.png")
+                        button#exitBtn
+                            img(src="/public/img/exit2.png")
+                        select#cameras
+                div#myPanel
+                    h3#currentNickname
+                    h1#roomTitle       
+                    form#chatForm
+                        ul#chatList
+                        input(placeholder="Message", required, type="text")
+                        button Send
+        script(src="https://kit.fontawesome.com/13650dff62.js" crossorigin="anonymous")
+        script(src="/socket.io/socket.io.js")
+        script(src="/public/app.js")
