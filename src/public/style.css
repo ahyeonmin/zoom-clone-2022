@@ -1,16 +1,18 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
-@font-face {
-  font-family: "GmarketSansMedium";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 
 :root {
-  --point: #00a2e0;
+  --point: #1338BD;
   --gray: #d7d8d8;
+  --black: #353535;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 * {
@@ -27,13 +29,8 @@ body {
   min-height: 720px;
 }
 
-input:focus {
-  outline: none;
-}
 
-button:hover {
-  cursor: pointer;
-}
+
 
 /* ----------------- */
 
@@ -57,7 +54,7 @@ button:hover {
   margin-bottom: 50px;
   font-size: 35px;
   font-weight: bold;
-  color: #3F3F3F;
+  color: var(--point);
 }
 
 #enterForm h5 {
@@ -87,19 +84,21 @@ button:hover {
 
 /* ----------------- */
 
+
+
+
 #stream {
   width: 100vw;
   height: 100vh;
-  padding-left: 9.5%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 1.9% 0 1.9% 20%;
 }
 
 #streamWrap {
-  width: 90%;
+  width: 75%;
   height: fit-content;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   border: 1px solid lightgray;
 }
@@ -107,20 +106,22 @@ button:hover {
 /* ----------------- */
 
 #myStream {
-  width: 45%;
+  width: 40%;
   max-width: 900px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 25px;
+  margin-right: 10px;
   overflow-x: hidden;
+  padding-bottom: 20px;
 }
 
 #myStream h1 {
-  padding: 15px 0px;
-  text-align: center;
-  font-family: "GmarketSansMedium";
-  font-size: 30px;
+  padding-top: 3px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 26px;
   font-weight: bold;
   color: var(--point);
 }
@@ -134,16 +135,16 @@ button:hover {
 }
 
 #myStream video#myFace {
-  width: 400px;
-  height: 300px;
-  margin-bottom: 20px;
+  width: 380px;
+  height: 285px;
+  margin-bottom: 17px;
   background-color: var(--gray);
 }
 
 #myStream video#peerFace {
-  width: 400px;
-  height: 300px;
-  margin-bottom: 20px;
+  width: 380px;
+  height: 285px;
+  margin-bottom: 17px;
   background-color: var(--gray);
   background-image: url("/public/img/user.png");
   background-position: center;
@@ -170,7 +171,6 @@ button:hover {
   border: none;
   background-color: transparent;
   color: var(--point);
-  font-family: "GmarketSansMedium";
 }
 
 #myStream select:focus {
@@ -182,57 +182,64 @@ button:hover {
 #myPanel {
   width: 100%;
   max-width: 330px;
-  margin-top: 50px;
-  padding: 30px 40px 30px 25px;
   background-color: white;
+  margin-left: 10px;
 }
 
-#myPanel h3#currentNickname,
-h3#chatTitle {
-  margin-bottom: 15px;
-  font-family: "GmarketSansMedium";
+#myPanel #nicknameContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#myPanel #nicknameContainer #currentNickname {
   font-size: 20px;
   font-weight: bold;
   color: var(--point);
 }
 
+#myPanel #nicknameContainer #exitBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+#textContainer {
+  display: flex;
+}
+
 #myPanel input {
-  width: calc(100% - 70px);
+  width: 235px;
   padding: 5px 10px;
   border: none;
   background-color: var(--gray);
-  font-family: "GmarketSansMedium";
 }
 
-#myPanel button {
+#textContainer button {
   width: 70px;
   padding: 5px;
   border: none;
   background-color: var(--point);
-  font-family: "GmarketSansMedium";
   color: white;
 }
 
 #myPanel #chatForm #chatList {
-  height: 540px;
-  padding: 20px;
-  background-color: gold;
+  width: 305px;
+  height: 560px;
   overflow-x: hidden;
   overflow-y: auto;
+  border: 1px solid lightgray;
 }
 
 #myPanel #chatForm #chatList li {
   margin-top: 5px;
   margin-bottom: 15px;
   padding: 10px;
-  border-radius: 10px;
-  background-color: white;
-  font-size: 13px;
-  font-family: "GmarketSansMedium";
+  border-radius: 8px;
+  font-size: 15px;
   word-break: break-all;
 }
 
 #myPanel #chatForm #chatList span {
   font-size: 12px;
-  font-family: "GmarketSansMedium";
 }
+
