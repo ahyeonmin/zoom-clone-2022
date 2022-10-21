@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
 
 :root {
-  --point: #1338BD;
+  --blue: #1338BD;
+  --skyblue: #ABD5E8;
   --gray: #d7d8d8;
   --black: #353535;
 }
 
 input:focus {
   outline: none;
+  background: none;
 }
 
 button:hover {
@@ -17,16 +19,15 @@ button:hover {
 
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 300;
   color: #353535;
+  overflow: hidden;
 }
 
 body {
   width: 100%;
-  min-width: 1280px;
-  min-height: 720px;
+  height: 100vh;
+  font-family: 'Jost', sans-serif;
 }
 
 
@@ -54,7 +55,7 @@ body {
   margin-bottom: 50px;
   font-size: 35px;
   font-weight: bold;
-  color: var(--point);
+  color: var(--blue);
 }
 
 #enterForm h5 {
@@ -70,176 +71,166 @@ body {
 }
 
 #enterForm button {
-  position: relative;
-  right: 5px;
-  margin-top: 20px;
+  margin: auto;
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin-top: 45px;
+  background-color: var(--skyblue);
   border: none;
-  background-color: white;
+  font-weight: 400;
 }
 
 #enterForm button:hover {
-  font-weight: bold;
-  transition: all ease 0.1s;
+  opacity: 0.8;
+  transition: all ease 0.4s;
 }
 
 /* ----------------- */
 
-
-
-
-#stream {
-  width: 100vw;
-  height: 100vh;
-  padding: 1.9% 0 1.9% 20%;
-}
-
 #streamWrap {
-  width: 75%;
   height: fit-content;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  border: 1px solid lightgray;
+  justify-content: space-around;
+  margin: 2.5% 20%;
+  padding: 2%;
+  border: 1px solid var(--gray);
 }
 
 /* ----------------- */
 
 #myStream {
-  width: 40%;
-  max-width: 900px;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-top: 25px;
-  margin-right: 10px;
-  overflow-x: hidden;
-  padding-bottom: 20px;
-}
-
-#myStream h1 {
-  padding-top: 3px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 26px;
-  font-weight: bold;
-  color: var(--point);
-}
-
-#myStream #videoContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex-wrap: wrap;
-  overflow-x: hidden;
-}
-
-#myStream video#myFace {
-  width: 380px;
-  height: 285px;
-  margin-bottom: 17px;
-  background-color: var(--gray);
-}
-
-#myStream video#peerFace {
-  width: 380px;
-  height: 285px;
-  margin-bottom: 17px;
-  background-color: var(--gray);
-  background-image: url("/public/img/user.png");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#myStream #buttonContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-#myStream button {
-  padding: 0;
-  padding-right: 30px;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
+#myStream #roomTitle {
+  align-self: flex-start;
+  margin-bottom: 12.5px;
+  margin-left: 13px;
+  font-size: 25px;
+  color: var(--blue);
 }
 
-#myStream select {
-  height: 38px;
-  border: none;
-  background-color: transparent;
-  color: var(--point);
+#myStream #videoContainer video {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
 }
 
-#myStream select:focus {
-  outline: none;
+#myStream #videoContainer video:first-child {
+  padding-bottom: 10px;
+}
+
+#myStream #buttonContainer {
+  display: flex;
+  margin-top: 30px;
+}
+
+#myStream #buttonContainer button {
+  width: 23px;
+  margin-right: 10px;
+  background: none;
+  border: none;
+}
+
+#myStream #buttonContainer button img:hover {
+  opacity: 0.5;
+  transition: all ease 0.1s;
+}
+
+#myStream #buttonContainer select {
+  background: none;
+  border: 1px solid var(--gray);
+  font-size: 12px;
 }
 
 /* ----------------- */
 
 #myPanel {
-  width: 100%;
-  max-width: 330px;
-  background-color: white;
-  margin-left: 10px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
 }
 
 #myPanel #nicknameContainer {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 #myPanel #nicknameContainer #currentNickname {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--point);
+  position: relative;
+  top: 9.5px;
+  font-size: 14px;
 }
 
 #myPanel #nicknameContainer #exitBtn {
+  position: relative;
+  top: 3px;
+  width: 23px;
   background: none;
   border: none;
-  font-size: 20px;
 }
 
-#textContainer {
+#myPanel #nicknameContainer #exitBtn img:hover {
+  opacity: 0.5;
+  transition: all ease 0.1s;
+}
+
+#myPanel #chatForm {
   display: flex;
-}
-
-#myPanel input {
-  width: 235px;
-  padding: 5px 10px;
-  border: none;
-  background-color: var(--gray);
-}
-
-#textContainer button {
-  width: 70px;
-  padding: 5px;
-  border: none;
-  background-color: var(--point);
-  color: white;
+  flex-direction: column;
 }
 
 #myPanel #chatForm #chatList {
-  width: 305px;
-  height: 560px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  border: 1px solid lightgray;
+  height: 78vh;
+  border: 1px solid var(--gray);
+  border-bottom: none;
+  overflow: auto; 
+}
+
+#chatList::-webkit-scrollbar {
+  display: none;
 }
 
 #myPanel #chatForm #chatList li {
-  margin-top: 5px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 8px;
+  margin: 10px 7px 5px auto;
+  border-radius: 30px;
+  padding: 7px 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 15px;
-  word-break: break-all;
 }
 
-#myPanel #chatForm #chatList span {
+#myPanel #chatForm #textContainer {
+  display: flex;
+  width: 100%;
+}
+
+#myPanel #chatForm #textContainer input {
+  width: 90%;
+  border: 1px solid var(--gray);
+  border-right: none;
+  padding: 3px 5px;
   font-size: 12px;
 }
 
+#myPanel #chatForm #textContainer button {
+  width: 10%;
+  background: none;
+  border: 1px solid var(--gray);
+  border-left: none;
+}
+
+#myPanel #chatForm #textContainer button img {
+  position: relative;
+  top: 1.5px;
+}
+
+#myPanel #chatForm #textContainer button img:hover {
+  opacity: 0.5;
+  transition: all ease 0.1s;
+}

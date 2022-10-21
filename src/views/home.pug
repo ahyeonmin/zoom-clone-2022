@@ -18,25 +18,26 @@ html(lang="en")
         div#stream
             div#streamWrap
                 div#myStream
-                    h1#noom.
+                    h1#roomTitle
                     div#videoContainer
                         video#myFace(autoplay,playsinline)
                         video#peerFace(autoplay,playsinline)
                     div#buttonContainer
                         button#mute
-                            img(src="/public/img/mike2.png")
+                            img(src="/public/microphone-solid.svg")
                         button#camera
-                            img(src="/public/img/video2.png")
-                        button#exitBtn
-                            img(src="/public/img/exit2.png")
+                            img(src="/public/video-solid.svg")
                         select#cameras
                 div#myPanel
-                    h3#currentNickname
-                    h1#roomTitle       
+                    div#nicknameContainer
+                        h3#currentNickname
+                        button#exitBtn
+                            img(src="/public/angle-right-solid.svg")
                     form#chatForm
                         ul#chatList
-                        input(placeholder="Message", required, type="text")
-                        button Send
-        script(src="https://kit.fontawesome.com/13650dff62.js" crossorigin="anonymous")
+                        div#textContainer
+                            input(placeholder="Message", required, type="text")
+                            button
+                                img(src="/public/arrow-circle-up-solid.svg")
         script(src="/socket.io/socket.io.js")
         script(src="/public/app.js")

@@ -4,8 +4,8 @@ const socket = io();
 
 let roomName;
 let nickname;
-let muted = false; // 소리 on
-let cameraOff = false; // 카메라 on
+let muted = false; // ?냼由? on
+let cameraOff = false; // 移대찓?씪 on
 
 let myStream;
 let myPeerConnection;
@@ -22,7 +22,7 @@ const muteBtn = document.querySelector("#mute");
 const cameraBtn = document.querySelector("#camera");
 const camerasSelect = document.querySelector("#cameras");
 
-// 카메라 목록 생성
+// 移대찓?씪 紐⑸줉 ?깮?꽦
 async function getCameras() {
   try {
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -42,7 +42,7 @@ async function getCameras() {
   }
 }
 
-// 내 비디오, 오디오 설정
+// ?궡 鍮꾨뵒?삤, ?삤?뵒?삤 ?꽕?젙
 async function getMedia(deviceId) {
   const initialConstraints = {
     audio: true,
@@ -65,37 +65,37 @@ async function getMedia(deviceId) {
   }
 }
 
-// 소리 on/off
+// ?냼由? on/off
 function handleMuteClick(event) {
   event.preventDefault();
   myStream
     .getAudioTracks()
     .forEach((track) => (track.enabled = !track.enabled));
   if (!muted) {
-    muteBtn.innerHTML = '<img src="/public/img/nomike2.png">';
+    muteBtn.innerHTML = '<img src="/public/microphone-slash-solid.svg">';
     muted = true;
   } else {
-    muteBtn.innerHTML = '<img src="/public/img/mike2.png">';
+    muteBtn.innerHTML = '<img src="/public/microphone-solid.svg">';
     muted = false;
   }
 }
 
-// 카메라 on/off
+// 移대찓?씪 on/off
 function handleCameraClick(event) {
   event.preventDefault();
   myStream
     .getVideoTracks()
     .forEach((track) => (track.enabled = !track.enabled));
   if (!cameraOff) {
-    cameraBtn.innerHTML = '<img src="/public/img/novideo2.png">';
+    cameraBtn.innerHTML = '<img src="/public/video-slash-solid.svg">';
     cameraOff = true;
   } else {
-    cameraBtn.innerHTML = '<img src="/public/img/video2.png">';
+    cameraBtn.innerHTML = '<img src="/public/video-solid.svg">';
     cameraOff = false;
   }
 }
 
-// 카메라 선택
+// 移대찓?씪 ?꽑?깮
 async function handleCameraChange() {
   await getMedia(camerasSelect.value);
   if (myPeerConnection) {
@@ -121,7 +121,7 @@ const enterForm = document.querySelector("#enterForm");
 const stream = document.querySelector("#stream");
 stream.hidden = true;
 
-// 화면 설정
+// ?솕硫? ?꽕?젙
 async function initStream() {
   enter.hidden = true;
   stream.hidden = false;
@@ -129,7 +129,7 @@ async function initStream() {
   makeConnection();
 }
 
-// 채팅방 입장
+// 梨꾪똿諛? ?엯?옣
 async function handleEnterSubmit(event) {
   event.preventDefault();
   const roomInput = enterForm.querySelector("#roomInput");
@@ -143,7 +143,7 @@ async function handleEnterSubmit(event) {
   nicknameInput.value = "";
   socket.emit("enter_room", roomName, nickname);
   const currentNickname = document.querySelector("#currentNickname");
-  currentNickname.innerText = `it's me. ${nickname}`;
+  currentNickname.innerText = `: ${nickname}`;
 }
 
 enterForm.addEventListener("submit", handleEnterSubmit);
@@ -244,13 +244,21 @@ function addMessage(msg, nickname) {
   span.innerText = nickname;
   chatList.appendChild(span);
   chatList.appendChild(li);
+  span.style.fontSize = "12px";
+  span.style.marginLeft = "12px";
+  span.style.position = "relative";
+  span.style.top = "6px";
+  li.style.backgroundColor = "#d7d8d8";
+  li.style.width = "fit-content";
+  li.style.marginLeft = "7px";
 }
 
 function addMyMessage(msg) {
   const chatList = document.querySelector("#chatList");
   const li = document.createElement("li");
-  li.setAttribute("style", "background-color: rgba(255, 255, 255, 0.5)");
-  li.style.textAlign = "right";
+  li.setAttribute("style", "background-color: #ABD5E8");
+  li.style.color = "white";
+  li.style.width ="fit-content";
   li.innerText = msg;
   chatList.appendChild(li);
 }
