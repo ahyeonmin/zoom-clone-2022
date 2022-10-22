@@ -4,8 +4,8 @@ const socket = io();
 
 let roomName;
 let nickname;
-let muted = false; // ?†Œë¦? on
-let cameraOff = false; // ì¹´ë©”?¼ on
+let muted = false; // ì˜¤ë””ì˜¤ on
+let cameraOff = false; // ì¹´ë©”ë¼ on
 
 let myStream;
 let myPeerConnection;
@@ -22,7 +22,7 @@ const muteBtn = document.querySelector("#mute");
 const cameraBtn = document.querySelector("#camera");
 const camerasSelect = document.querySelector("#cameras");
 
-// ì¹´ë©”?¼ ëª©ë¡ ?ƒ?„±
+// ì¹´ë©”ë¼ ëª©ë¡ ìƒì„±
 async function getCameras() {
   try {
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -42,7 +42,7 @@ async function getCameras() {
   }
 }
 
-// ?‚´ ë¹„ë””?˜¤, ?˜¤?””?˜¤ ?„¤? •
+// ë‚´ ë¹„ë””ì˜¤, ì˜¤ë””ì˜¤ ì„¤ì •
 async function getMedia(deviceId) {
   const initialConstraints = {
     audio: true,
@@ -65,37 +65,37 @@ async function getMedia(deviceId) {
   }
 }
 
-// ?†Œë¦? on/off
+// ì†Œë¦¬ on/off
 function handleMuteClick(event) {
   event.preventDefault();
   myStream
     .getAudioTracks()
     .forEach((track) => (track.enabled = !track.enabled));
   if (!muted) {
-    muteBtn.innerHTML = '<img src="/public/microphone-slash-solid.svg">';
+    muteBtn.innerHTML = '<img src="/public/icons/microphone-slash-solid.svg">';
     muted = true;
   } else {
-    muteBtn.innerHTML = '<img src="/public/microphone-solid.svg">';
+    muteBtn.innerHTML = '<img src="/public/icons/microphone-solid.svg">';
     muted = false;
   }
 }
 
-// ì¹´ë©”?¼ on/off
+// ì¹´ë©”ë¼ on/off
 function handleCameraClick(event) {
   event.preventDefault();
   myStream
     .getVideoTracks()
     .forEach((track) => (track.enabled = !track.enabled));
   if (!cameraOff) {
-    cameraBtn.innerHTML = '<img src="/public/video-slash-solid.svg">';
+    cameraBtn.innerHTML = '<img src="/public/icons/video-slash-solid.svg">';
     cameraOff = true;
   } else {
-    cameraBtn.innerHTML = '<img src="/public/video-solid.svg">';
+    cameraBtn.innerHTML = '<img src="/public/icons/video-solid.svg">';
     cameraOff = false;
   }
 }
 
-// ì¹´ë©”?¼ ?„ ?ƒ
+// ì¹´ë©”ë¼ ì„ íƒ
 async function handleCameraChange() {
   await getMedia(camerasSelect.value);
   if (myPeerConnection) {
@@ -121,7 +121,7 @@ const enterForm = document.querySelector("#enterForm");
 const stream = document.querySelector("#stream");
 stream.hidden = true;
 
-// ?™”ë©? ?„¤? •
+// í™”ë©´ ì„¤ì •
 async function initStream() {
   enter.hidden = true;
   stream.hidden = false;
@@ -129,7 +129,7 @@ async function initStream() {
   makeConnection();
 }
 
-// ì±„íŒ…ë°? ?…?¥
+// ì±„íŒ…ë°© ì…ì¥
 async function handleEnterSubmit(event) {
   event.preventDefault();
   const roomInput = enterForm.querySelector("#roomInput");

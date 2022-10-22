@@ -24,20 +24,20 @@ html(lang="en")
                         video#peerFace(autoplay,playsinline)
                     div#buttonContainer
                         button#mute
-                            img(src="/public/microphone-solid.svg")
+                            img(src="/public/icons/microphone-solid.svg")
                         button#camera
-                            img(src="/public/video-solid.svg")
+                            img(src="/public/icons/video-solid.svg")
                         select#cameras
                 div#myPanel
                     div#nicknameContainer
                         h3#currentNickname
                         button#exitBtn
-                            img(src="/public/angle-right-solid.svg")
+                            img(src="/public/icons/angle-right-solid.svg")
                     form#chatForm
                         ul#chatList
                         div#textContainer
                             input(placeholder="Message", required, type="text")
                             button
-                                img(src="/public/arrow-circle-up-solid.svg")
+                                img(src="/public/icons/arrow-circle-up-solid.svg")
         script(src="/socket.io/socket.io.js")
         script(src="/public/app.js")
